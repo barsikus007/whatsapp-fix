@@ -1,0 +1,26 @@
+orjson
+uvicorn[standard]
+gunicorn
+fastapi
+fastapi-pagination
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
+
+asyncpg
+sqlalchemy
+alembic
+sqlmodel
+
+# pydantic[email,dotenv]
+# pydantic[email]
+pydantic
+email-validator
+
+# loguru
+apscheduler
+
+# pandas
+# httpx
+
+# https://fastapi.tiangolo.com/#optional-dependencies

@@ -65,13 +65,15 @@ async def read_users_list(
                     number = choice(numbers)
                     response.set_cookie(key="target", value=number, max_age=259200, httponly=True)
             else:
-                ip=request.client.host
+                ip = request.headers["x-real-ip"]
                 click = await crud.click.get_by_ip(db, ip=ip)
                 if not click:
                     number = choice(numbers)
                     await crud.click.create(db, obj_in=IClickCreate(ip=ip, number=number))
                 else:
                     number = click.number
+                    if number not in numbers:
+                        number = choice(numbers)
             if device.is_mobile():
                 return f"whatsapp://send?phone={number}"
             else:
